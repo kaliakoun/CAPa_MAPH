@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion du Budget CAP Agricole</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .form-container { margin-bottom: 20px; }
+        .result-container { margin-top: 20px; font-weight: bold; }
+        label { display: block; margin-top: 10px; }
+        input { padding: 5px; width: 100px; }
+        .submit-btn { padding: 10px; background-color: #4CAF50; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h1>Gestion du Budget pour les élèves de CAP Agricole</h1>
+    
+    <div class="form-container">
+        <h2>Entrée des données</h2>
+        
+        <label for="revenu">Revenu Mensuel (€) :</label>
+        <input type="number" id="revenu" placeholder="2000" value="2000">
+        
+        <label for="matériel">Dépenses Matériel (€) :</label>
+        <input type="number" id="matériel" placeholder="500" value="500">
+        
+        <label for="alimentation">Dépenses Alimentation (€) :</label>
+        <input type="number" id="alimentation" placeholder="300" value="300">
+        
+        <label for="carburant">Dépenses Carburant (€) :</label>
+        <input type="number" id="carburant" placeholder="200" value="200">
+        
+        <label for="assurances">Dépenses Assurances (€) :</label>
+        <input type="number" id="assurances" placeholder="100" value="100">
+        
+        <label for="loisirs">Dépenses Loisirs (€) :</label>
+        <input type="number" id="loisirs" placeholder="150" value="150">
+        
+        <button class="submit-btn" onclick="calculerBudget()">Calculer</button>
+    </div>
+
+    <div class="result-container">
+        <h2>Résultats</h2>
+        <p><strong>Epargne mensuelle :</strong> <span id="epargneMensuelle"></span> €</p>
+        <p><strong>Nombre de mois pour le tracteur (6 000 €) :</strong> <span id="moisTracteur"></span> mois</p>
+    </div>
+
+    <script>
+        function calculerBudget() {
+            // Récupérer les valeurs des inputs
+            let revenu = parseFloat(document.getElementById("revenu").value);
+            let matériel = parseFloat(document.getElementById("matériel").value);
+            let alimentation = parseFloat(document.getElementById("alimentation").value);
+            let carburant = parseFloat(document.getElementById("carburant").value);
+            let assurances = parseFloat(document.getElementById("assurances").value);
+            let loisirs = parseFloat(document.getElementById("loisirs").value);
+
+            // Calcul de l'épargne mensuelle
+            let dépensesTotales = matériel + alimentation + carburant + assurances + loisirs;
+            let épargneMensuelle = revenu - dépensesTotales;
+
+            // Calcul du nombre de mois pour acheter un tracteur
+            let moisTracteur = Math.ceil(6000 / épargneMensuelle);
+
+            // Affichage des résultats
+            document.getElementById("epargneMensuelle").innerText = épargneMensuelle.toFixed(2);
+            document.getElementById("moisTracteur").innerText = moisTracteur;
+        }
+    </script>
+</body>
+</html>
