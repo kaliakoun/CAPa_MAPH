@@ -40,3 +40,6 @@ document.getElementById('exo2').addEventListener('submit', function(event) {
         <p>Proposez un ajustement pour respecter votre budget.</p>
     `;
 });
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("Le script est bien chargé !");
+});
